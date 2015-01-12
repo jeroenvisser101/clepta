@@ -31,16 +31,16 @@ Clepta.Finder.findLoginForms = function (document) {
   // Loop through all forms, keep if the form contains both a password and a
   // normal text field
   for (var key in forms) {
-    if (forms.hasOwnProperty(key)) {
-      // Retrieve value from forms array
-      var form = forms[key];
+    if (!this.formFields.hasOwnProperty(key)) continue;
 
-      // Check if the form contains both a password field and normal text field
-      if (form.querySelector('input[type="password"]') &&
-          form.querySelector('input[type="text"], input:not([type])')) {
-        // Add this form to the list of login forms
-        loginForms.push(form);
-      }
+    // Retrieve value from forms array
+    var form = forms[key];
+
+    // Check if the form contains both a password field and normal text field
+    if (form.querySelector('input[type="password"]') &&
+        form.querySelector('input[type="text"], input:not([type])')) {
+      // Add this form to the list of login forms
+      loginForms.push(form);
     }
   }
 
