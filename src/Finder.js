@@ -6,8 +6,13 @@ window.Clepta = window.Clepta || {};
  * Finder
  *
  * It's the Finder's job to find and return requested types of fields.
+ *
+ * @param {DOMElement} document The document to search in. Defaulted to
+ *                              window.document.
  */
-Clepta.Finder = function () {};
+Clepta.Finder = function (document) {
+  this.document = document || window.document;
+};
 
 /**
  * Ask Clepta to find all login forms.
@@ -17,16 +22,13 @@ Clepta.Finder = function () {};
  * for either username or email, and a field for a secret, most likely a
  * password.
  *
- * @param {DOMElement} document If this is given, it will try to find only
- *                              children of this parent.
  * @return {DOMElement[]} loginForms The forms found to be a login form.
  */
-Clepta.Finder.findLoginForms = function (document) {
-  document = document || window.document;
+Clepta.Finder.findLoginForms = function () {
   var loginForms;
 
   // Get all forms in the document
-  var forms = document.querySelectorAll('form');
+  var forms = this.document.querySelectorAll('form');
 
   // Loop through all forms, keep if the form contains both a password and a
   // normal text field
