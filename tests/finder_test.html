@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>Clepta test</title>
+  <script src="../lib/underscore.js"></script>
+  <script src="../src/Finder.js"></script>
+  <script src="../src/Extractor.js"></script>
+  <script src="../src/Reporter.js"></script>
+</head>
+<body>
+  <form action="/login" method="POST">
+    <input type="text"     name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+
+    <input type="submit" value="Login">
+  </form>
+  <form action="/login" method="POST">
+    <input type="text"     name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+
+    <input type="submit" value="Login">
+  </form>
+  <form action="/login" method="POST">
+    <input type="text"     name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+
+    <input type="submit" value="Login">
+  </form>
+  <script>
+    (function (document, window, Clepta) {
+      var finder = new Clepta.Finder(document),
+          loginForms = finder.findLoginForms(),
+          extractor = new Clepta.Extractor(loginForms),
+          formData = extractor.extract();
+      console.debug(formData);
+    })(document, window, Clepta);
+  </script>
+</body>
+</html>
