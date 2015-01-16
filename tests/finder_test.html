@@ -9,30 +9,52 @@
 </head>
 <body>
   <form action="/login" method="POST">
-    <input type="text"     name="username" placeholder="Enter username">
+    <input type="text" name="username" placeholder="Enter username">
     <input type="password" name="password" placeholder="Enter password">
 
     <input type="submit" value="Login">
   </form>
   <form action="/login" method="POST">
-    <input type="text"     name="username" placeholder="Enter username">
-    <input type="password" name="password" placeholder="Enter password">
+    <label for="username">Usernama:</label>
+    <input type="text"
+           name="username"
+           id="username"
+           placeholder="Enter username">
+
+    <label for="password">Password:</label>
+    <input type="password"
+           name="password"
+           id="password"
+           placeholder="Enter password">
 
     <input type="submit" value="Login">
   </form>
   <form action="/login" method="POST">
-    <input type="text"     name="username" placeholder="Enter username">
+    <input type="text" name="username" placeholder="Enter username">
     <input type="password" name="password" placeholder="Enter password">
 
     <input type="submit" value="Login">
   </form>
+
+  <button class="show-form-data">Show logins</button>
+  <pre class="form-data-container"></pre>
+
   <script>
     (function (document, window, Clepta) {
-      var finder = new Clepta.Finder(document),
-          loginForms = finder.findLoginForms(),
-          extractor = new Clepta.Extractor(loginForms),
-          formData = extractor.extract();
-      console.debug(formData);
+      var button = document.querySelector('.show-form-data');
+
+      button.addEventListener('click', function () {
+        var finder = new Clepta.Finder(document),
+            loginForms = finder.findLoginForms(),
+            extractor = new Clepta.Extractor(loginForms),
+            formData = extractor.extract();
+
+        // Stringify and show to user
+        var formDataJson;
+        formDataJson = JSON.stringify(formData, undefined, 2);
+        document.querySelector('.form-data-container').textContent = formDataJson;
+      });
+
     })(document, window, Clepta);
   </script>
 </body>
