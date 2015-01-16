@@ -28,7 +28,7 @@ Clepta.Extractor = function (forms) {
   /**
    * Extracts the date from the form in the current context.
    *
-   * @return {}
+   * @return {Object}
    */
   this.extract = function () {
     return _.map(this.forms, function (form) {
