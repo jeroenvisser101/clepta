@@ -5,7 +5,7 @@ show how easy it is to do targetted password extraction on websites.
 ## What does it do?
 Clepta is able to indentify forms with login details in them, and retrieve
 them. It is then able to send the extracted information to a specified
-endpoint.
+endpoint. If you want to see it in action, see the [demo].
 
 ## How does it accomplish what it does?
 Clepta easily finds forms based on the form's field types. Simply put, the
@@ -29,3 +29,5 @@ with that.
 
 ## Can I use this in my virus/malware/attack?
 I'd prefer if you didn't.
+
+[demo]: http://jeroenvisser101.github.io/clepta/
